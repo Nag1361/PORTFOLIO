@@ -30,7 +30,7 @@ const Contact = () => {
   };
 
   const contactInfo = [
-    { icon: Mail, label: "nagarajusalendra2005@gmail.com", href: "mailto:nagarajusalendra2005@gmail.com" },
+    { icon: Mail, label: "nagaraju.ssssam@gmail.com", href: "mailto:nagaraju.ssssam@gmail.com" },
     { icon: Phone, label: "+91 6300802474", href: "tel:+916300802474" },
     { icon: Linkedin, label: "LinkedIn Profile", href: "https://linkedin.com" },
   ];

@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, ArrowUp } from "lucide-react";
+import { Github, Linkedin, Mail, ArrowUp, Twitter } from "lucide-react";
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -18,7 +18,8 @@ const Footer = () => {
             {[
               { icon: Github, href: "https://github.com" },
               { icon: Linkedin, href: "https://linkedin.com" },
-              { icon: Mail, href: "mailto:nagarajusalendra2005@gmail.com" },
+              { icon: Twitter, href: "https://x.com/Naga5635" },
+              { icon: Mail, href: "mailto:nagaraju.ssssam@gmail.com" },
             ].map(({ icon: Icon, href }) => (
               <a
                 key={href}

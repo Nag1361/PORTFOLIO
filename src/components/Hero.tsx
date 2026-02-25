@@ -51,10 +51,34 @@ const Hero = () => {
             A passionate Computer Science Engineering student crafting scalable, secure, 
             and production-ready web applications. Driven by clean code and modern architecture.
           </motion.p>
+
+          {/* Social links */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 2.7, duration: 0.5 }}
+            transition={{ delay: 2.6, duration: 0.5 }}
+            className="flex gap-3 justify-center lg:justify-start mb-8"
+          >
+            {[
+              { label: "𝕏", href: "https://x.com/Naga5635" },
+              { label: "Reddit", href: "https://www.reddit.com/u/NAGA_0808/s/qzC5mylM1z" },
+            ].map(({ label, href }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-3 py-1.5 text-xs font-mono rounded-lg glass text-muted-foreground hover:text-primary glow-primary-hover transition-all"
+              >
+                {label}
+              </a>
+            ))}
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 2.8, duration: 0.5 }}
             className="flex flex-wrap gap-4 justify-center lg:justify-start"
           >
             <a
