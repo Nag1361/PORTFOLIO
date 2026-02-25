@@ -14,12 +14,14 @@ const timeline = [
     title: "Intermediate – MPC",
     institution: "SR Edu Centre",
     status: "Completed",
+    percentage: "81.0%",
   },
   {
     period: "2020 – 2021",
     title: "SSC",
     institution: "Shine High School",
     status: "Completed",
+    percentage: "10.0%",
   },
 ];
 
@@ -71,9 +73,16 @@ const Education = () => {
                   </div>
                   <h3 className="font-semibold text-foreground mb-1">{item.title}</h3>
                   <p className="text-sm text-muted-foreground">{item.institution}</p>
-                  <span className="inline-block mt-2 px-2.5 py-0.5 text-xs rounded-full bg-primary/10 text-primary">
-                    {item.status}
-                  </span>
+                  <div className="flex items-center gap-2 mt-2 flex-wrap">
+                    <span className="px-2.5 py-0.5 text-xs rounded-full bg-primary/10 text-primary">
+                      {item.status}
+                    </span>
+                    {"percentage" in item && item.percentage && (
+                      <span className="px-2.5 py-0.5 text-xs rounded-full bg-accent/10 text-accent font-medium">
+                        {item.percentage}
+                      </span>
+                    )}
+                  </div>
                 </div>
               </div>
             </motion.div>
