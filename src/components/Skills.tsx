@@ -23,12 +23,12 @@ const skillGroups = [
   {
     icon: Database,
     title: "Databases",
-    skills: ["MySQL"],
+    skills: ["MySQL", "MongoDB"],
   },
   {
     icon: Wrench,
     title: "Tools & Platforms",
-    skills: ["VS Code", "IntelliJ IDEA", "Eclipse", "Git", "GitHub", "Terraform", "Postman", "Jupyter"],
+    skills: ["Git", "GitHub", "Terraform", "Postman"],
   },
   {
     icon: Film,

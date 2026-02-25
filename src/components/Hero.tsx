@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowDown, ExternalLink } from "lucide-react";
+import profileImg from "@/assets/nagaraju.png";
 
 const FloatingBlob = ({ className }: { className: string }) => (
   <div className={`absolute rounded-full blur-3xl opacity-20 ${className}`} />
@@ -81,9 +82,7 @@ const Hero = () => {
           className="relative"
         >
           <div className="w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72 rounded-full gradient-border glow-primary overflow-hidden">
-            <div className="w-full h-full rounded-full bg-secondary flex items-center justify-center text-6xl font-bold gradient-text">
-              NS
-            </div>
+            <img src={profileImg} alt="Nagaraju Salendra" className="w-full h-full rounded-full object-cover object-top" />
           </div>
           {/* Floating tech badges */}
           <motion.div
