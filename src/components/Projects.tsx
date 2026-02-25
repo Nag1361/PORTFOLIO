@@ -5,23 +5,28 @@ import { ExternalLink, Github, Shield, Database as DbIcon, Layout, Search } from
 const projects = [
   {
     title: "Tiny Wings – Baby Growth Analysis",
-    description: "Full-stack baby growth tracking platform with comprehensive analytics and secure authentication.",
+    subtitle: "Full-Stack · Healthcare Platform",
+    description: "A full-stack platform for tracking baby growth, healthcare tips, and personalized parenting guidance.",
     features: [
-      { icon: Shield, text: "JWT Authentication & Spring Security" },
-      { icon: DbIcon, text: "MySQL with Spring Boot layered architecture" },
-      { icon: Layout, text: "Responsive frontend with growth charts" },
+      { icon: Shield, text: "Spring Security with JWT for secure login & role-based access control" },
+      { icon: DbIcon, text: "Layered backend architecture (Controller, Service, Repository) with Spring Boot" },
+      { icon: Search, text: "RESTful APIs for authentication, profile management & content delivery" },
+      { icon: DbIcon, text: "MySQL for persistent user and child profile data storage" },
+      { icon: Layout, text: "Responsive UI with age-based growth sections, healthcare modules & community resources" },
     ],
-    tags: ["Spring Boot", "Java", "MySQL", "REST API"],
+    tags: ["Spring Boot", "Java", "MySQL", "REST API", "JWT", "Bootstrap"],
   },
   {
     title: "Virtual Herbal Garden",
-    description: "Interactive AYUSH educational platform showcasing medicinal plants with rich multimedia content.",
+    subtitle: "AYUSH · EdTech Platform",
+    description: "An interactive learning experience showcasing medicinal plants used in AYUSH systems.",
     features: [
-      { icon: Search, text: "Advanced search & filter functionality" },
-      { icon: Layout, text: "Multimedia plant information cards" },
-      { icon: DbIcon, text: "Educational UI with interactive content" },
+      { icon: Search, text: "Powerful search & filter functionality for fast plant discovery" },
+      { icon: Layout, text: "Engaging UI with multimedia descriptions & virtual exploration features" },
+      { icon: DbIcon, text: "Structured, searchable medicinal plant data interface" },
+      { icon: Shield, text: "Focused on usability, accessibility & educational clarity" },
     ],
-    tags: ["HTML", "CSS", "JavaScript", "Education"],
+    tags: ["HTML", "CSS", "JavaScript", "Search & Filter", "Educational UX"],
   },
 ];
 
@@ -57,6 +62,9 @@ const Projects = () => {
               <div className="h-1.5 bg-gradient-to-r from-primary to-accent" />
               
               <div className="p-6 sm:p-8">
+                <p className="text-xs font-mono text-primary/70 mb-1 tracking-wider uppercase">
+                  {project.subtitle}
+                </p>
                 <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
                   {project.title}
                 </h3>
