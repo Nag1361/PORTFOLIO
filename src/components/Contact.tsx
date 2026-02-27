@@ -1,13 +1,21 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { Mail, Phone, Linkedin, Send, CheckCircle } from "lucide-react";
+import { Mail, Phone, Linkedin, Send, CheckCircle, AlertCircle, Loader2 } from "lucide-react";
+import emailjs from "@emailjs/browser";
+
+const EMAILJS_SERVICE_ID = "service_gb3chna";
+const EMAILJS_TEMPLATE_ID = "template_oe3w8ym";
+const EMAILJS_PUBLIC_KEY = "bm3Ye8daBswxqbahI";
 
 const Contact = () => {
   const ref = useRef(null);
+  const formRef = useRef<HTMLFormElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [sendError, setSendError] = useState("");
 
   const validate = () => {
     const errs: Record<string, string> = {};
@@ -18,14 +26,32 @@ const Contact = () => {
     return errs;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const errs = validate();
     setErrors(errs);
+    setSendError("");
     if (Object.keys(errs).length === 0) {
-      setSent(true);
-      setForm({ name: "", email: "", message: "" });
-      setTimeout(() => setSent(false), 4000);
+      setSending(true);
+      try {
+        await emailjs.send(
+          EMAILJS_SERVICE_ID,
+          EMAILJS_TEMPLATE_ID,
+          {
+            from_name: form.name,
+            from_email: form.email,
+            message: form.message,
+          },
+          EMAILJS_PUBLIC_KEY
+        );
+        setSent(true);
+        setForm({ name: "", email: "", message: "" });
+        setTimeout(() => setSent(false), 4000);
+      } catch (err) {
+        setSendError("Failed to send message. Please try again later.");
+      } finally {
+        setSending(false);
+      }
     }
   };
 
@@ -68,6 +94,15 @@ const Contact = () => {
                 <CheckCircle size={16} /> Message sent successfully!
               </motion.div>
             )}
+            {sendError && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="flex items-center gap-2 p-3 rounded-lg bg-destructive/10 text-destructive text-sm"
+              >
+                <AlertCircle size={16} /> {sendError}
+              </motion.div>
+            )}
             <div>
               <input
                 type="text"
@@ -100,9 +135,10 @@ const Contact = () => {
             </div>
             <button
               type="submit"
-              className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-primary to-accent text-primary-foreground font-semibold hover:opacity-90 hover:shadow-[0_0_30px_hsl(190_95%_55%/0.3)] transition-all"
+              disabled={sending}
+              className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-primary to-accent text-primary-foreground font-semibold hover:opacity-90 hover:shadow-[0_0_30px_hsl(190_95%_55%/0.3)] transition-all disabled:opacity-60 disabled:cursor-not-allowed"
             >
-              <Send size={16} /> Send Message
+              {sending ? <><Loader2 size={16} className="animate-spin" /> Sending...</> : <><Send size={16} /> Send Message</>}
             </button>
           </motion.form>
 
