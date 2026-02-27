@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowDown, ExternalLink } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import profileImg from "@/assets/nagaraju.png";
 
 const FloatingBlob = ({ className }: { className: string }) => (
@@ -81,20 +81,17 @@ const Hero = () => {
             transition={{ delay: 2.8, duration: 0.5 }}
             className="flex flex-wrap gap-4 justify-center lg:justify-start"
           >
-            <a
-              href="#projects"
-              className="group inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-primary to-accent text-primary-foreground font-semibold transition-all hover:shadow-[0_0_30px_hsl(190_95%_55%/0.3)] hover:scale-105"
-            >
-              View Projects
-              <ArrowDown size={16} className="group-hover:translate-y-0.5 transition-transform" />
-            </a>
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg glass glow-primary-hover font-semibold transition-all hover:scale-105"
+            <button
+              onClick={() => {
+                import('sonner').then(({ toast }) => {
+                  toast.info("Resume download will be available soon");
+                });
+              }}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg glass glow-primary-hover font-semibold transition-all hover:scale-105 cursor-pointer"
             >
               Download Resume
               <ExternalLink size={16} />
-            </a>
+            </button>
           </motion.div>
         </div>
 
